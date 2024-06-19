@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+{% block title %} Edit Photo {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Edit Photo for {{ product.name }}</h1>
+    <form action="{{ url_for('update_photo', id=product.id) }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="productImage" class="form-label">Upload New Image</label>
+            <input type="file" name="image" class="form-control" id="productImage" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Photo</button>
+    </form>
+</div>
+{% endblock %}

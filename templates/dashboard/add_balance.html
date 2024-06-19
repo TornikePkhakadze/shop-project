@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+{% block title %} Add Balance {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Add Balance</h1>
+    <form action="{{ url_for('add_balance') }}" method="post">
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" name="amount" class="form-control" id="amount" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Balance</button>
+    </form>
+</div>
+{% endblock %}

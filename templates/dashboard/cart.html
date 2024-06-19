@@ -1,0 +1,36 @@
+{% extends "partials/base.html" %}
+{% block title %} Cart {% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Shopping Cart</h1>
+    {% if cart_items %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>${{ item.price }}</td>
+                <td>
+                    <a class="btn btn-danger btn-sm" href="{{ url_for('remove_from_cart', todo_id=item.id) }}">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+        <form action="{{ url_for('purchase') }}" method="post">
+            <button type="submit" class="btn btn-success">Purchase</button>
+        </form>
+    </div>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
